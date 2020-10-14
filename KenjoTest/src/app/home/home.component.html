@@ -8,7 +8,7 @@
                      aria-label="Number"
                      matInput
                      [formControl]="searchAlbum"
-                     [matAutocomplete]="auto">
+                     [matAutocomplete]="auto" (keyup)="updateResults()">
               <mat-autocomplete #auto="matAutocomplete">
                 <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                   {{option}}
@@ -19,7 +19,7 @@
         </div>
         <div class="col">
           <div id="addAlbum" class="mt-3">
-              <button mat-fab data-toggle="modal" data-target="#exampleModal" (click)="openDialog()">
+              <button mat-fab data-toggle="modal" data-target="#exampleModal" (click)="openDialogCreateAlbum()">
                   <mat-icon>add</mat-icon>
               </button>
           </div>
@@ -27,8 +27,8 @@
           
     </div>
     <div class="row">
-        <div class="col-4" *ngFor="let album of allAlbums">
-            <mat-card class="albumCard" >
+        <div class="col-4" *ngFor="let album of allAlbums" >
+            <mat-card class="albumCard" *ngIf="album.title.toLowerCase().includes(searchedAlbum) || searchAlbum.value == ''">
                 <mat-card-header>
                   
                   <mat-card-title>{{album.title}} </mat-card-title>
@@ -42,8 +42,8 @@
                 </h3>
                 </mat-card-content>
                 <mat-card-actions>
-                  <button mat-button>Update</button>
-                  <button mat-button>Delete</button>
+                  <button (click)="openDialogUpdateAlbum(album)" mat-button>Update</button>
+                  <button (click)="openDialogDeleteAlbum(album)" mat-button>Delete</button>
                 </mat-card-actions>
               </mat-card>
         </div>

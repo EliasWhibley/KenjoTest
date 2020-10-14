@@ -24,13 +24,17 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { NewAlbumComponent } from './new-album/new-album.component';
 import { MatSelectModule } from '@angular/material/select';
+import { UpdateAlbumComponent } from './update-album/update-album.component';
+import { DeleteAlbumComponent } from './delete-album/delete-album.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NewAlbumComponent
+    NewAlbumComponent,
+    UpdateAlbumComponent,
+    DeleteAlbumComponent
   ],
   imports: [
     BrowserModule,

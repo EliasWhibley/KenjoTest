@@ -1,0 +1,50 @@
+<h2 mat-dialog-title>Update Album</h2>
+
+<mat-dialog-content class="formNewAlbum" [formGroup]="updateAlbum">
+  
+    <mat-form-field class="form">
+        <mat-label>Title</mat-label>
+        <input matInput type="text"
+                placeholder="The title of the album"
+               formControlName="title" name="title">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Artist</mat-label>
+        <mat-select formControlName="artistId" name="artistId">
+          <mat-option *ngFor="let artist of allArtist" [value]="artist._id">
+            {{artist.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="form">
+        <mat-label>Cover URL</mat-label>
+        <input matInput type="text"
+                placeholder="An image of the album"
+               formControlName="coverUrl" name="coverUrl">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="form">
+        <mat-label>Year</mat-label>
+        <input matInput type="datetime"
+                placeholder="Relase Date"
+               formControlName="year" name="year">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="form">
+        <mat-label>Genre</mat-label>
+        <input matInput type="text"
+                placeholder="Genre of the album"
+               formControlName="genre" name="genre">
+    </mat-form-field>
+     
+ 
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button (click)="saveAlbum(album._id)" [mat-dialog-close]="true" cdkFocusInitial >Save</button>
+      </mat-dialog-actions>
+</mat-dialog-actions>

@@ -6,6 +6,8 @@ import { DataService } from '../data.service';
 import { map, startWith } from 'rxjs/operators';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NewAlbumComponent } from '../new-album/new-album.component';
+import { UpdateAlbumComponent } from '../update-album/update-album.component';
+import { DeleteAlbumComponent } from '../delete-album/delete-album.component';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +16,7 @@ import { NewAlbumComponent } from '../new-album/new-album.component';
 })
 export class HomeComponent implements OnInit {
   allAlbums: any;
+  searchedAlbum: string;
   searchAlbum = new FormControl();
   options: string[];
   filteredOptions: Observable<string[]>;
@@ -38,7 +41,7 @@ export class HomeComponent implements OnInit {
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   };
 
-  openDialog() {
+  openDialogCreateAlbum() {
 
     const dialogConfig = new MatDialogConfig();
 
@@ -46,5 +49,30 @@ export class HomeComponent implements OnInit {
     dialogConfig.autoFocus = true;
 
     this.dialog.open(NewAlbumComponent, dialogConfig);
+  };
+
+  updateResults() {
+    this.searchedAlbum = this.searchAlbum.value.toLowerCase();
+  };
+
+  openDialogUpdateAlbum(albumInfo) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = albumInfo;
+
+    this.dialog.open(UpdateAlbumComponent, dialogConfig);
+  };
+
+  openDialogDeleteAlbum(albumInfo) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = albumInfo;
+
+    this.dialog.open(DeleteAlbumComponent, dialogConfig);
   }
+
+
+
 }
