@@ -16,10 +16,12 @@ import { DeleteAlbumComponent } from '../delete-album/delete-album.component';
 })
 export class HomeComponent implements OnInit {
   allAlbums: any;
+  allArtist: any;
   searchedAlbum: string;
   searchAlbum = new FormControl();
   options: string[];
   filteredOptions: Observable<string[]>;
+
 
   constructor(private dataService: DataService, private dialog: MatDialog) {
 
@@ -27,6 +29,7 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
     this.allAlbums = await this.dataService.getAllAlbums();
+    this.allArtist = await this.dataService.getAllArtist();
     this.options = this.allAlbums.map(option => option.title);
     this.filteredOptions = this.searchAlbum.valueChanges
       .pipe(
@@ -40,6 +43,12 @@ export class HomeComponent implements OnInit {
 
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   };
+
+  revealArtistName(idArtist) {
+    const result = this.allArtist.find(artist => artist.artistId = idArtist);
+
+    return result.name
+  }
 
   openDialogCreateAlbum() {
 
