@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DataService {
-    baseURL: string;
+  baseURL: string;
   constructor(private httpClient: HttpClient) {
     this.baseURL = 'http://localhost:3000/'
   }
@@ -27,11 +27,11 @@ export class DataService {
   };
 
   postAlbum(albumInfo) {
-    return this.httpClient.put(`${this.baseURL}album`, albumInfo).toPromise();
+    return this.httpClient.post(`${this.baseURL}album`, albumInfo).toPromise();
   };
 
   postAlbums(albums: Array<any>) {
-    return this.httpClient.put(`${this.baseURL}album`, albums).toPromise();
+    return this.httpClient.post(`${this.baseURL}album`, albums).toPromise();
   };
 
   getArtist(artistId: number) {

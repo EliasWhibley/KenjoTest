@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { DataService } from '../data.service';
 
 import { map, startWith } from 'rxjs/operators';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { NewAlbumComponent } from '../new-album/new-album.component';
 
 @Component({
   selector: 'app-home',
@@ -16,14 +18,13 @@ export class HomeComponent implements OnInit {
   options: string[];
   filteredOptions: Observable<string[]>;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private dialog: MatDialog) {
 
   }
 
   async ngOnInit() {
     this.allAlbums = await this.dataService.getAllAlbums();
     this.options = this.allAlbums.map(option => option.title);
-    console.log(this.options);
     this.filteredOptions = this.searchAlbum.valueChanges
       .pipe(
         startWith(''),
@@ -35,5 +36,15 @@ export class HomeComponent implements OnInit {
     const filterValue = value.toLowerCase();
 
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  };
+
+  openDialog() {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    this.dialog.open(NewAlbumComponent, dialogConfig);
   }
 }
