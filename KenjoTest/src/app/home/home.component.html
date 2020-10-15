@@ -4,7 +4,7 @@
         <form class="formSearch">
             <mat-form-field class="searchAlbums">
               <input type="text"
-                     placeholder="Busque un album"
+                     placeholder="Search albums"
                      aria-label="Number"
                      matInput
                      [formControl]="searchAlbum"
@@ -28,7 +28,7 @@
     </div>
     <div class="row">
         <div class="col-4" *ngFor="let album of allAlbums" >
-            <mat-card class="albumCard" *ngIf="album.title.toLowerCase().includes(searchedAlbum) || searchAlbum.value == ''">
+            <mat-card class="albumCard" >
                 <mat-card-header>
                   
                   <mat-card-title>{{album.title}} </mat-card-title>

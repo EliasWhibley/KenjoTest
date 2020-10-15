@@ -8,6 +8,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NewAlbumComponent } from '../new-album/new-album.component';
 import { UpdateAlbumComponent } from '../update-album/update-album.component';
 import { DeleteAlbumComponent } from '../delete-album/delete-album.component';
+import { Album } from '../album';
+import { Artist } from '../artist';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +17,8 @@ import { DeleteAlbumComponent } from '../delete-album/delete-album.component';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  allAlbums: any;
+  allAlbums: Album[];
+  albumsNotToShow: Album[];
   allArtist: any;
   searchedAlbum: string;
   searchAlbum = new FormControl();
@@ -24,6 +27,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private dataService: DataService, private dialog: MatDialog) {
+    this.albumsNotToShow = [];
 
   }
 
@@ -60,9 +64,15 @@ export class HomeComponent implements OnInit {
     this.dialog.open(NewAlbumComponent, dialogConfig);
   };
 
-  updateResults() {
-    this.searchedAlbum = this.searchAlbum.value.toLowerCase();
-  };
+  /*  updateResults() {
+     this.searchedAlbum = this.searchAlbum.value.toLowerCase();
+     for (let album of this.allAlbums) {
+       if (!album.title.toLowerCase().includes(this.searchedAlbum) || this.searchedAlbum == '') {
+         
+       };
+     }
+ 
+   }; */
 
   openDialogUpdateAlbum(albumInfo) {
     const dialogConfig = new MatDialogConfig();

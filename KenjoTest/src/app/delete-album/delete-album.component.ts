@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Album } from '../album';
 import { DataService } from '../data.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { DataService } from '../data.service';
   styleUrls: ['./delete-album.component.css']
 })
 export class DeleteAlbumComponent implements OnInit {
-  album: any;
+  album: Album;
   constructor(private dialogRef: MatDialogRef<DeleteAlbumComponent>, @Inject(MAT_DIALOG_DATA) data, private dataService: DataService) {
     this.album = data;
   }
@@ -17,7 +18,8 @@ export class DeleteAlbumComponent implements OnInit {
   }
 
   async deleteAlbum() {
-    const result = await this.dataService.deleteAlbum(this.album._id);
+    const artistId = this.album._id
+    const result = await this.dataService.deleteAlbum(artistId);
     console.log(result);
 
 

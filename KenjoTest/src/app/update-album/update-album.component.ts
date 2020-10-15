@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Album } from '../album';
 import { DataService } from '../data.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { DataService } from '../data.service';
   styleUrls: ['./update-album.component.css']
 })
 export class UpdateAlbumComponent implements OnInit {
-  album: any;
+  album: Album;
   updateAlbum: FormGroup;
   allArtist: any;
   constructor(
