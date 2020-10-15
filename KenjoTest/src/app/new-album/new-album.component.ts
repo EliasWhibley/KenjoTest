@@ -28,6 +28,7 @@ export class NewAlbumComponent implements OnInit {
   async saveAlbum() {
     const result = await this.dataService.postAlbum(this.newAlbum.value);
     console.log(result);
+    window.location.reload()
 
   }
 

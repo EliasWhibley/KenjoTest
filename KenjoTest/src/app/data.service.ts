@@ -53,11 +53,11 @@ export class DataService {
   };
 
   postArtist(artist) {
-    return this.httpClient.post<Artist>(`${this.baseURL}album`, artist).toPromise();
+    return this.httpClient.post<Artist>(`${this.baseURL}artist`, artist).toPromise();
   };
 
   postArtists(artists: Array<Artist>) {
-    return this.httpClient.post<Artist[]>(`${this.baseURL}album`, artists).toPromise();
+    return this.httpClient.post<Artist[]>(`${this.baseURL}artists`, artists).toPromise();
   };
 
 }

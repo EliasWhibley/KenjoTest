@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>New Artist</h2>
+
+<mat-dialog-content class="formNewAlbum" [formGroup]="newArtist">
+  
+    <mat-form-field class="form">
+        <mat-label>Name</mat-label>
+        <input matInput type="text"
+                placeholder="The name of artist"
+               formControlName="name" name="name">
+    </mat-form-field>
+      <br>
+      <mat-form-field class="form">
+        <mat-label>Photo</mat-label>
+        <input matInput type="text"
+                placeholder="An image of artist"
+               formControlName="photoUrl" name="photoUrl">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="form">
+        <mat-label>Birth Date</mat-label>
+        <input matInput type="date"
+                placeholder="Date"
+               formControlName="birthdate" name="birthdate">
+    </mat-form-field>
+    <br>
+    <mat-form-field class="form">
+        <mat-label>Death Date</mat-label>
+        <input matInput type="date"
+                placeholder="Date"
+               formControlName="deathDate" name="deathDate">
+    </mat-form-field>
+     
+ 
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button (click)="saveArtist()" [mat-dialog-close]="true" cdkFocusInitial >Save</button>
+      </mat-dialog-actions>
+</mat-dialog-actions>

@@ -26,6 +26,7 @@ import { NewAlbumComponent } from './new-album/new-album.component';
 import { MatSelectModule } from '@angular/material/select';
 import { UpdateAlbumComponent } from './update-album/update-album.component';
 import { DeleteAlbumComponent } from './delete-album/delete-album.component';
+import { CreateArtistComponent } from './create-artist/create-artist.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { DeleteAlbumComponent } from './delete-album/delete-album.component';
     HomeComponent,
     NewAlbumComponent,
     UpdateAlbumComponent,
-    DeleteAlbumComponent
+    DeleteAlbumComponent,
+    CreateArtistComponent
   ],
   imports: [
     BrowserModule,

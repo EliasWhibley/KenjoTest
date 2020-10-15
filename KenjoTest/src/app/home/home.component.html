@@ -1,6 +1,6 @@
 <div class="container p-5 mt-5">
-    <div class="row">
-        <div class="col">
+    <div class="row mb-3">
+        <div class="col-6">
         <form class="formSearch">
             <mat-form-field class="searchAlbums">
               <input type="text"
@@ -21,6 +21,15 @@
           <div id="addAlbum" class="mt-3">
               <button mat-fab data-toggle="modal" data-target="#exampleModal" (click)="openDialogCreateAlbum()">
                   <mat-icon>add</mat-icon>
+                  <mat-icon>album</mat-icon>
+              </button>
+          </div>
+        </div>
+        <div class="col">
+          <div id="addArtist" class="mt-3">
+              <button mat-fab data-toggle="modal" data-target="#exampleModal" (click)="openDialogNewArtist()">
+                  <mat-icon>add</mat-icon>
+                  <mat-icon>library_music</mat-icon>
               </button>
           </div>
         </div>
@@ -34,7 +43,7 @@
                   <mat-card-title>{{album.title}} </mat-card-title>
                   <mat-card-subtitle>{{revealArtistName(album.artistId)}}</mat-card-subtitle>
                 </mat-card-header>
-                <img mat-card-image [src]="album.coverUrl" alt="Photo of the album">
+                <img class="imgCard" mat-card-image [src]="album.coverUrl" alt="Photo of the album">
                 <mat-card-content>
                   <h3>Year: {{album.year}}
                   </h3>
@@ -49,4 +58,3 @@
         </div>
     </div>
     </div>
-    

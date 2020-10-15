@@ -21,6 +21,7 @@ export class DeleteAlbumComponent implements OnInit {
     const artistId = this.album._id
     const result = await this.dataService.deleteAlbum(artistId);
     console.log(result);
+    window.location.reload()
 
 
   }

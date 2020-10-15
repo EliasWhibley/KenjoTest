@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Album } from '../album';
+import { Artist } from '../artist';
 import { DataService } from '../data.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { DataService } from '../data.service';
 export class UpdateAlbumComponent implements OnInit {
   album: Album;
   updateAlbum: FormGroup;
-  allArtist: any;
+  allArtist: Artist[];
   constructor(
     @Inject(MAT_DIALOG_DATA) data,
     private dataService: DataService) {
@@ -35,6 +36,7 @@ export class UpdateAlbumComponent implements OnInit {
   async saveAlbum(albumId) {
     const result = await this.dataService.putAlbum(this.updateAlbum.value, albumId);
     console.log(result);
+    window.location.reload()
   }
 
 }
