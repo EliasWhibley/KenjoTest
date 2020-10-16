@@ -39,19 +39,19 @@ export class HomeComponent implements OnInit {
         map(value => this._filter(value))
       );
   }
-
+  /* Para el filtrado de albumes, muestra el autocompletar */
   _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   };
-
+  /* Muestra los nombres de artistas según su ID */
   revealArtistName(idArtist) {
     const result = this.allArtist.find(artist => artist.artistId = idArtist);
 
     return result.name
   }
-
+  /* Abre el dialogo de crecaion de album */
   openDialogCreateAlbum() {
 
     const dialogConfig = new MatDialogConfig();
@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
 
     this.dialog.open(NewAlbumComponent, dialogConfig);
   };
-
+  /* Actualiza los resultados */
   async updateResults() {
 
     if (this.searchAlbum.value.toLowerCase() == '') {
@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit {
       })
     }
   };
-
+  /* Abre el dialogo de actualizar album */
   openDialogUpdateAlbum(albumInfo) {
     const dialogConfig = new MatDialogConfig();
 
@@ -89,7 +89,7 @@ export class HomeComponent implements OnInit {
 
     this.dialog.open(UpdateAlbumComponent, dialogConfig);
   };
-
+  /* Abre el dialogo de borrar album */
   openDialogDeleteAlbum(albumInfo) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -99,7 +99,7 @@ export class HomeComponent implements OnInit {
 
     this.dialog.open(DeleteAlbumComponent, dialogConfig);
   };
-
+  /* Abre el dialogo de crear artista */
   openDialogNewArtist() {
     const dialogConfig = new MatDialogConfig();
 
